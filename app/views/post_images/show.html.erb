@@ -1,10 +1,45 @@
 <div>
-  <p>画像</p><%= attachment_image_tag @post_image, :image %>
-  <p>説明：<%= @post_image.introduction %></p>
-  <p>ユーザーネーム：<%= @post_image.user.name %></p>
+  <p>画像</p><%= attachment_image_tag @post_image, :image, size:"200x200" %>
   <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+  <p>ユーザーネーム：<%= @post_image.user.name %></p>
+  <p>説明：<%= @post_image.introduction %></p>
+  
   <% if @post_image.user == current_user %>
    <%= link_to "削除", post_image_path(@post_image), method: :delete %>
    <%= link_to "編集", edit_post_image_path(@post_image) %>
   <% end %>
+  
+  <% if @post_image.favorited_by?(current_user) %>
+    <p>
+      <%= link_to post_image_favorites_path(@post_image), method: :delete do %>
+        ♥<%= @post_image.favorites.count %> 
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_image_favorites_path(@post_image), method: :post do %>
+        ♡<%= @post_image.favorites.count %> 
+      <% end %>
+    </p>
+  <% end %>
+</div>
+
+<div>
+<p>コメント件数：<%= @post_image.comments.count %></p>
+<% @post_image.comments.each do |comment| %>
+  <p><%=  %></p>
+  <%= comment.user.name %>
+  <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+  <% if comment.user == current_user %>
+   <div>
+     <%= link_to "削除", post_image_comment_path(comment.post_image, comment), method: :delete %>
+   </div>
+  <% end %>
+<% end %>
+</div>
+<div>
+<%= form_with(model:[@post_image, @comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントを入力" %>
+  <%= f.submit "送信する" %>
+<% end %>
 </div>
