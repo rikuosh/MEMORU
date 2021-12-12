@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_051210) do
+ActiveRecord::Schema.define(version: 2021_12_12_054829) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment"
@@ -27,6 +27,27 @@ ActiveRecord::Schema.define(version: 2021_12_10_051210) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "price"
+    t.string "store"
+    t.integer "genre_id"
+    t.text "information"
+    t.string "size"
+    t.date "purchase_date"
+    t.date "warranty_period"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "item_image_id"
+  end
+
   create_table "post_images", force: :cascade do |t|
     t.string "image_id"
     t.text "introduction"
@@ -41,6 +62,15 @@ ActiveRecord::Schema.define(version: 2021_12_10_051210) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|

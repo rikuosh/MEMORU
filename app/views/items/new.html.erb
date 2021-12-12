@@ -1,0 +1,27 @@
+<h1>家財新規登録</h1>
+<%= form_with model: @item, local:true do |f| %>
+  <h4>家財名</h4>
+  <%= f.text_field :name %>
+  
+  <h4>購入年月日</h4>
+  
+  <h4>購入場所</h4>
+  <%= f.text_field :store %>
+  <h4>金額</h4>
+  <%= f.text_field :price %><span>円</span>
+  <h4>サイズ</h4>
+  <%= f.text_field :size %>
+  <h4>ジャンル選択</h4>
+  <%= f.collection_select(:genre_id, @genres, :id, :name,{prompt: "--選択する--"}) %>
+  
+  <h4>保証期限</h4>
+
+  <h4>メモ</h4>
+  <%= f.text_area :information %>
+  
+  <h4>家財の画像</h4>
+  <%= f.attachment_field:item_image, placeholder:"家財の画像" %>
+  
+  
+  <%= f.submit '投稿' %>
+<% end %>

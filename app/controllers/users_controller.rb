@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @post_images = @user.post_images
+    @following_users = @user.following_user
+    @follower_users = @user.follower_user
   end
   
   def edit
@@ -18,6 +20,18 @@ class UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
+  
+  def follows
+    user = User.find(params[:id])
+    @users = user.following_user
+  end
+  
+  def followers
+    user = User.find(params[:id])
+    @users = user.follower_user
+  end
+    
+  
   
  private
 
