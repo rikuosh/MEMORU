@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   
   def index
+    @genres = Genre.all
+    #@genre = @genres.find(params[:genre_id])
     @items = Item.all
   end
   
