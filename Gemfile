@@ -69,3 +69,12 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+gem 'dotenv-rails'
+gem 'kaminari','~> 1.2.1'
+
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'rails-i18n'
+
+gem 'wicked_pdf'
+gem "wkhtmltopdf-binary"

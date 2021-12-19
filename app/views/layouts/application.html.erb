@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>MEMORU</title>
+    <meta charset="utf-8" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -44,5 +45,13 @@
 
     <% end %>
     <%= yield %>
+    <footer>
+      <li>
+        <%= link_to 'お問い合せ', inquiry_index_path %>
+      </li>
+    </footer>
+
   </body>
+
+
 </html>

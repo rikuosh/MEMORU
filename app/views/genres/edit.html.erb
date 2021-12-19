@@ -1,3 +1,4 @@
+<%= render 'layouts/error', obj: @genre %>
 <h2>ジャンル編集</h2>
 <%= form_with model: @genre, url: genre_path(@genre),local:true do |f| %>
  <table class='table'>

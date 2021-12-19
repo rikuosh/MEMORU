@@ -1,9 +1,21 @@
-<h1>投稿一覧</h1>
 <%= link_to "新規投稿する", new_post_image_path %>
-<% @post_images.each do |post_image| %>
-<div>
-  <%= link_to post_image_path(post_image.id) do %>
-  <%= attachment_image_tag post_image, :image, size:"100x100" %>
+
+<% if @post_image.present? %>
+ <h1>タグ"<%= @tag %>"に関する投稿</h1>
+  <% @post_image.each do |post_image| %>
+    <div>
+      <%= link_to post_image_path(post_image.id) do %>
+        <%= attachment_image_tag post_image, :image, size:"100x100" %>
+      <% end %>
+    </div>
   <% end %>
-</div>
+<% else %>
+　<h1>投稿一覧</h1>
+  <% @post_images.each do |post_image| %>
+    <div>
+      <%= link_to post_image_path(post_image.id) do %>
+      <%= attachment_image_tag post_image, :image, size:"100x100" %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>

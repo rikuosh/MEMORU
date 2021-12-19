@@ -1,0 +1,56 @@
+<% if @model == 'user' %>
+  <h3>【検索結果】検索ワード：<%= @content %></h3>
+    <p><%= render 'searchs/form' %></p>
+      <% @records.each do |user| %>
+      <div>
+        <%= link_to user_path(user.id) do %>
+        <%= attachment_image_tag user, :profile_image, size:"100x100" %>
+        <% end %>
+        <%= user.name %>
+        <% if current_user != user %>
+          <% if current_user.following?(user)  %>  
+          <%= link_to "フォローを外す", user_relationships_path(user.id), method: :delete %>
+          <% else %>
+          <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
+          <% end %>
+        <% end %>
+      </div>
+<% end %>
+    
+    
+    
+<% else @model == 'items' %>
+  <h3>【検索結果】検索ワード：<%= @content %></h3>
+    <div>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>家財名</th>
+        <th>ジャンル</th>
+        <th>購入年月日</th>
+        <th>pdf出力</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |item| %>
+      <tr>
+        <th>
+          <% if item.status == true %>  
+          <%= link_to item_path(item.id) do %>
+          <%= attachment_image_tag item, :item_image, size:"50x50", fallback: "no_image.jpg" %>
+          <% end %>
+        </th>
+        <th><%= item.name %></th>
+        <th><%= item.genre.name %></th>
+        <th><%= item.purchase_date.strftime('%Y/%m/%d')  %></th>
+        <th><%= link_to "PDF", item_path(item, format: :pdf)%></th>
+      </tr>
+         <% end %>
+         <% end %>
+    </tbody>
+  </table>
+</div>
+    
+    
+<% end %>

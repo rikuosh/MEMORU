@@ -1,1 +1,12 @@
 <h1>TOP</h1>
+
+<h4>新着投稿一覧</h4>
+<div>
+  <% @post_images.each do |post_image| %>
+    <div>
+      <%= link_to post_image_path(post_image.id) do %>
+        <div><%= attachment_image_tag post_image, :image, size:"200x200" %></div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

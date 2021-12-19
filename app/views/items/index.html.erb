@@ -1,14 +1,15 @@
-<h1>ジャンル一覧</h1>
+
+
+<h3>ジャンル検索</h3>
 <% @genres.each do |genre| %>
- <%= link_to genre.name, items_path %>
+ <%= link_to genre.name, items_path(genre_id: genre.id) %> <!--ジャンルparamsを渡す-->
 <% end %>
 
 <% if params[:genre_id] %>
- <h1><%= @genre.name %>の家財一覧</h1>
+ <h1>ジャンル "<%= @genre.name %>" 一覧</h1>
 <% else %>
- <h1>家財一覧</h1>
+ <h1>所有している家財一覧</h1>
 <% end %>
-
 <div>
   <table>
     <thead>
@@ -17,12 +18,14 @@
         <th>家財名</th>
         <th>ジャンル</th>
         <th>購入年月日</th>
+        <th>pdf出力</th>
       </tr>
     </thead>
     <tbody>
       <% @items.each do |item| %>
       <tr>
         <th>
+          <% if item.status == true %>  
           <%= link_to item_path(item.id) do %>
           <%= attachment_image_tag item, :item_image, size:"50x50", fallback: "no_image.jpg" %>
           <% end %>
@@ -30,12 +33,17 @@
         <th><%= item.name %></th>
         <th><%= item.genre.name %></th>
         <th><%= item.purchase_date.strftime('%Y/%m/%d')  %></th>
+        <th><%= link_to "PDF", item_path(item, format: :pdf)%></th>
       </tr>
-      <% end %>
+         <% end %>
+         <% end %>
     </tbody>
   </table>
 </div>
 
-
+<% unless params[:genre_id] %>
+<p><%= link_to "家財一覧のPDFを出力する", items_path(format: :pdf) %></p>
+<% end %>
+<p><%= link_to "手放した家財一覧", dispose_path %></p>
 <p><%= link_to "家財新規登録", new_item_path %></th>
 <p><%= link_to "ジャンル登録", genres_path %>

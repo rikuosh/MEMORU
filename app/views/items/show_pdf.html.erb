@@ -1,0 +1,10 @@
+<h2>家財情報詳細</h2>
+<div>
+  <%= attachment_image_tag @item, :item_image, size:"100x100" %>
+  <p>家財名：<%= @item.name %></p>
+  <p>購入年月日：<%= @item.purchase_date %></p>
+  <p>サイズ:<%= @item.size %></p>
+</div>
+
+<strong>作成日</strong>
+<%= Date.today.strftime('%Y/%m/%d') %>

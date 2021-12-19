@@ -15,5 +15,14 @@ Rails.application.routes.draw do
   end
   
   resources :genres, only:[:new, :create, :index, :edit, :update]
+  get "items/dispose" => "items#dispose", as: "dispose"
   resources :items, only:[:new, :create, :index, :show, :edit, :update, :destroy]
+  
+  
+  get 'inquiry/index' => 'inquiry#index'
+  post 'inquiry/confirm' => 'inquiry#confirm'
+  post 'inquiry/thanks' => 'inquiry#thanks'  
+
+  get '/search'  => 'searchs#search'
+  
 end

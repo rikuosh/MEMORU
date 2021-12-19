@@ -1,11 +1,20 @@
+<%= render 'layouts/error', obj: @comment %>
+
 <div>
   <p><%= attachment_image_tag @post_image, :image, size:"200x200" %></p>
   <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
   <p>ユーザーネーム：<%= @post_image.user.name %></p>
   <p>説明：<%= @post_image.introduction %></p>
+  <p>タグ：
+  <% if @tags.present? %>
+    <% @tags.each do |tag| %>
+      <%= link_to tag.name, post_images_path(tag: tag.name) %>
+    <% end %>
+  <% end %>
+  </p>
   
   <% if @post_image.user == current_user %>
-   <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+   <%= link_to "削除", post_image_path(@post_image), method: :delete, data: {confirm: "本当に削除してよろしいですか？"} %>
    <%= link_to "編集", edit_post_image_path(@post_image) %>
   <% end %>
   

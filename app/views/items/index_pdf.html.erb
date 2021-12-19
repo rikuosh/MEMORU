@@ -1,0 +1,23 @@
+<div>
+  <h3>所有家財一覧</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>家財名</th>
+        <th>サイズ(L x W x H)</th
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+      <tr>
+          <% if item.status == true %>  
+        <th><%= item.name %></th>
+        <th><%= item.size %></th>
+      </tr>
+         <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <strong>作成日</strong>
+  <%= Date.today.strftime('%Y/%m/%d') %>
+</div>

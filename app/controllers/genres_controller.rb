@@ -1,14 +1,18 @@
 class GenresController < ApplicationController
 
 def index
-    @genres = Genre.all
+    @genres = current_user.genres
     @genre = Genre.new
 end
 
 def create
-    @genre = Genre.new(genre_params)
-    @genre.save
-    redirect_to genres_path
+    @genres = current_user.genres
+    @genre = current_user.genres.new(genre_params)
+    if @genre.save
+     redirect_to genres_path
+    else
+     render :index
+    end
 end
 
 def edit
