@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     else
       all_items = Item.includes(:genre)
     end
-    @items = all_items.page(params[:page])
+    @items = current_user.items.page(params[:page])
      respond_to do |format|
       format.html
        format.pdf do

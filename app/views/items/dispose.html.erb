@@ -1,27 +1,27 @@
- <h1>処分した家財一覧</h1>
-<div>
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th>家財名</th>
-        <th>ジャンル</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @items.each do |item| %>
-      <tr>
-        <th>
-          <% if item.status == false %>  
-          <%= link_to item_path(item.id) do %>
-          <%= attachment_image_tag item, :item_image, size:"50x50", fallback: "no_image.jpg" %>
-          <% end %>
-        </th>
-        <th><%= item.name %></th>
-        <th><%= item.genre.name %></th>
-      </tr>
-         <% end %>
-         <% end %>
-    </tbody>
-  </table>
-</div>
+<div class="container mt-3 mb-3">
+  <h3>手放した家財一覧</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>家財名</th>
+          <th>ジャンル</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+        <tr>
+          <th>
+            <% if item.status == false %>  
+            <%= link_to item_path(item.id) do %>
+            <%= attachment_image_tag item, :item_image, size:"50x50", fallback: "no_image.jpg" %>
+            <% end %>
+          </th>
+          <th><%= item.name %></th>
+          <th><%= item.genre.name %></th>
+        </tr>
+           <% end %>
+           <% end %>
+      </tbody>
+    </table>
+  </div>

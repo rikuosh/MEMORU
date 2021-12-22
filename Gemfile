@@ -78,3 +78,8 @@ gem 'rails-i18n'
 
 gem 'wicked_pdf'
 gem "wkhtmltopdf-binary"
+gem 'jquery-rails'
+
+gem 'bootstrap', '~> 4.5'
+gem 'jquery-rails'
+gem 'font-awesome-sass', '~> 5.13'

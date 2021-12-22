@@ -1,14 +1,23 @@
-<div>
-  <%= attachment_image_tag @item, :item_image, size:"100x100" %>
-  <p>家財名：<%= @item.name %></p>
-  <p>購入年月日：<%= @item.purchase_date %></p>
-  <p>購入場所：<%= @item.store %></p>
-  <p>金額：<%= @item.price %></p>
-  <p>サイズ:<%= @item.size %></p>
-  <p>ジャンル:<%= @item.genre.name %></p>
-  <p>保証期限:<%= @item.warranty_period %></p>
-  <p>メモ:<%= @item.information %></p>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6 col-sm-6">
+      <%= attachment_image_tag @item, :item_image, size:"200x200", fallback: "no_image.jpg" %>
+    </div>
+    <div class="col-md-6 col-sm-6">
+      <p>家財名    :<%= @item.name %></p>
+      <p>購入年月日:<%= @item.purchase_date %></p>
+      <p>購入場所  :<%= @item.store %></p>
+      <p>金額      :<%= @item.price %>円</p>
+      <p>サイズ    :<%= @item.size %></p>
+      <p>ジャンル  :<%= @item.genre.name %></p>
+      <p>保証期限  :<%= @item.warranty_period %></p>
+      <p>メモ      :<%= @item.information %></p>
+    </div>
+  </div>
 </div>
+
+<div class="container text-center mt-3 mb-3">
 <% if user_signed_in? && @item.user_id == current_user.id %>
 <p><%= link_to "編集", edit_item_path(@item) %></p>
 <% end %>
+</div>

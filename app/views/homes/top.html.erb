@@ -1,12 +1,69 @@
-<h1>TOP</h1>
 
-<h4>新着投稿一覧</h4>
-<div>
+<div class="container mt-5 pt-4 bg-secondary">
+  <div class="row">
+    <div class="col-md-6 col-sm-6">
+      <%= image_tag('top_image1.jpg', size:"350x250")  %>
+    </div>
+    <div class="col-md-6 col-sm-6">
+    <h3 class="display-4">家で過ごす時間をもっと快適に</h2>
+    <p class="lead">インテリアと家財の記録を残してみましょう</p>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5 mb-5">
+  <h3 class="text-center mb-5">MEMORUでできること</h3>
+  <div class="row">
+    <div class="col-md-6 col-md-6">
+      <%= image_tag('top_about1.jpg', size:"350x250")  %>
+    </div>
+    <div class="col-md-6 col-md-6 align: middle">
+      <p>あなたの持っている家財の情報を思い出として残してみましょう。</br>
+      買い替えの時や修理が必要な時に登録した情報がきっと役に立つでしょう。
+      </p>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-6 col-md-6">
+      <p>登録した家財はPDFとして保存することも可能です。</br>
+      引越業者や譲り先などに家財の情報を簡単に共有できます。
+      </p>
+    </div>
+    <div class="col-md-6 col-md-6">
+      <%= image_tag('top_about2.jpg', size:"350x250")  %>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-6 col-md-6">
+      <%= image_tag('top_about3.jpg', size:"350x250")  %>
+    </div>
+    <div class="col-md-6 col-md-6">
+      <p>インテリア写真を投稿して他のユーザーと繋がってみましょう。</br>
+       お家をもっときれいに、過ごしやすくするためのアイデアが見つかるかもしれません。
+      </p>
+    </div>
+  </div>
+</div>
+
+<% unless user_signed_in? %>
+<div class="container mt-3 mb-3">
+  <p class="text-center"><%= link_to "新規会員登録する", new_user_registration_path, class: "btn btn-secondary text-white" %> </p>
+  <p class="text-center"><%= link_to "ログインする", new_user_session_path, class: "btn btn-secondary text-white" %> </p>  
+</div>
+<% end %>
+
+
+<div class="container mb-3">
+  <h4>新着投稿一覧</h4>
+  <div class="row">
   <% @post_images.each do |post_image| %>
-    <div>
+  <div class="row-cols-3 ro-cols-auto">
+    <div class="col">
       <%= link_to post_image_path(post_image.id) do %>
         <div><%= attachment_image_tag post_image, :image, size:"200x200" %></div>
-      <% end %>
+     <% end %>
     </div>
+  </div>
   <% end %>
+  </div>
 </div>
