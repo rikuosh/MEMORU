@@ -50,14 +50,14 @@
   
   <div class="container mt-3 mb-5">
     <div class="row">
-      <div class="col-md-6 col-sm-4">
+      <div class="col-md-6 col-sm-4 border">
         <h4>ジャンルごとに表示</h3>
         <div class="row　mr-2">
           <% @genres.each do |genre| %>
            <%= link_to genre.name, items_path(genre_id: genre.id) %> <!--ジャンルparamsを渡す-->
           <% end %>
         </div>
-        <p><%= link_to "新規ジャンル登録", genres_path %>
+        <p><%= link_to "新規ジャンル登録", genres_path %></p>
       </div>
       <div class="col-md-6 col-sm-4">
         <p><%= link_to "手放した家財一覧", dispose_path %></p>

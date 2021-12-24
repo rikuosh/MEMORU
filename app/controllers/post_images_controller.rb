@@ -1,5 +1,6 @@
-class PostImagesController < ApplicationController
+# frozen_string_literal: true
 
+class PostImagesController < ApplicationController
   def new
     @post_image = PostImage.new
   end
@@ -8,18 +9,16 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
     if @post_image.save
-     redirect_to post_images_path
+      redirect_to post_images_path
     else
-     render:new
+      render :new
     end
   end
 
   def index
-    @post_images = PostImage.all
+    @post_images = PostImage.all.order(created_at: :desc)
     @tags = PostImage.tag_counts_on(:tags).order('count desc')
-   if @tag = params[:tag]   
-    @post_image = PostImage.tagged_with(params[:tag])
-   end
+    @post_image = PostImage.tagged_with(params[:tag]) if @tag = params[:tag]
   end
 
   def show
@@ -35,16 +34,16 @@ class PostImagesController < ApplicationController
   def update
     @post_image = PostImage.find(params[:id])
     if @post_image.update(post_image_params)
-     redirect_to post_images_path
+      redirect_to post_images_path
     else
-     render :edit
+      render :edit
     end
   end
 
   def destroy
-  @post_image = PostImage.find(params[:id])
-  @post_image.destroy
-  redirect_to post_images_path
+    @post_image = PostImage.find(params[:id])
+    @post_image.destroy
+    redirect_to post_images_path
   end
 
   private
@@ -52,5 +51,4 @@ class PostImagesController < ApplicationController
   def post_image_params
     params.require(:post_image).permit(:image, :introduction, :tag_list)
   end
-
 end

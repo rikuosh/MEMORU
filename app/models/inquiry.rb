@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Inquiry
   include ActiveModel::Model
 
@@ -5,5 +7,4 @@ class Inquiry
 
   validates :name, presence: true
   validates :email, presence: true
-  
 end

@@ -19,3 +19,20 @@
 @import 'font-awesome';
 
 @import 'homes';
+
+@font-face{
+    font-family:'Corporate-Mincho-ver2';
+    src: font-url('/assets/Corporate-Mincho-ver2.ttf');
+}
+
+header{
+  font-family:'Corporate-Mincho-ver2';
+}
+
+main{
+  font-family:'Corporate-Mincho-ver2';
+}
+
+footer{
+  font-family:'Corporate-Mincho-ver2';
+}

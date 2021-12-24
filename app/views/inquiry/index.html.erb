@@ -1,6 +1,7 @@
 <%= render 'layouts/error', obj: @inquiry %>
 
 <%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
+<div class="container mt-3 mb-3">
   <div>
     <h1>お問い合わせ</h1>
   </div>
@@ -21,3 +22,5 @@
   </table>
   <%= f.submit '確認' %>
 <% end %>
+
+</div>

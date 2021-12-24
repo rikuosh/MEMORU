@@ -1,36 +1,37 @@
-class GenresController < ApplicationController
+# frozen_string_literal: true
 
-def index
+class GenresController < ApplicationController
+  def index
     @genres = current_user.genres
     @genre = Genre.new
-end
+  end
 
-def create
+  def create
     @genres = current_user.genres
     @genre = current_user.genres.new(genre_params)
     if @genre.save
-     redirect_to genres_path
+      redirect_to genres_path
     else
-     render :index
+      render :index
     end
-end
+  end
 
-def edit
+  def edit
     @genre = Genre.find(params[:id])
-end
+  end
 
-def update
+  def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-     redirect_to genres_path
+      redirect_to genres_path
     else
-     render :edit
+      render :edit
     end
-end
+  end
 
-private
-def genre_params
+  private
+
+  def genre_params
     params.require(:genre).permit(:name)
-end
-
+  end
 end

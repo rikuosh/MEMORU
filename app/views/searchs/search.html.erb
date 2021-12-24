@@ -1,6 +1,7 @@
+<div class="container mt-3 mb-3">
+<p><%= render 'searchs/form' %></p> 
 <% if @model == 'user' %>
-  <h3>【検索結果】検索ワード：<%= @content %></h3>
-    <p><%= render 'searchs/form' %></p>
+    <h3>【検索結果】検索ワード：<%= @content %></h3>
       <% @records.each do |user| %>
       <div>
         <%= link_to user_path(user.id) do %>
@@ -15,11 +16,11 @@
           <% end %>
         <% end %>
       </div>
+</div>
 <% end %>
-    
-    
-    
+
 <% else @model == 'items' %>
+<div class="container mt-3 mb-3">
   <h3>【検索結果】検索ワード：<%= @content %></h3>
     <div>
   <table>
@@ -51,6 +52,5 @@
     </tbody>
   </table>
 </div>
-    
-    
 <% end %>
+</div>

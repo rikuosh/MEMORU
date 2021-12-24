@@ -1,0 +1,22 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - 'config/initializers/*'
+    - 'config/spring.rb'
+    - 'lib/tasks/*'
+    - 'vendor/**/*'
+    - 'path/ruby'
+     - 'bin/**'
+    - 'node_modules/**/*'
+    - 'config/**/*'
+    - 'config.ru'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+    - 'Gemfile'

@@ -10,52 +10,53 @@
   <%= form_with model: @item, local:true do |f| %>
   
     <div class="form-group">
-      <h4>家財名<span class="text-danger">*</span></h4>
+      <p>家財名<span class="text-danger">*</span></p>
       <%= f.text_field :name,placeholder: "冷蔵庫" %>
     </div> 
     
     <div class="form-group">
-      <h4>購入年月日<span class="text-danger">*</span></h4>
+      <p>購入年月日<span class="text-danger">*</span></p>
       <%= f.date_field :purchase_date %>
     </div> 
     
     <div class="form-group">
-      <h4>購入場所</h4>
+      <p>購入場所</p>
       <%= f.text_field :store,placeholder: "ヤマダ電機" %>
     </div> 
     
     <div class="form-group">
-      <h4>金額</h4>
+      <p>金額</p>
       <%= f.text_field :price,placeholder: "120,000" %><span>円</span>
     </div> 
     
     <div class="form-group">
-      <h4>サイズ</h4>
+      <p>サイズ</p>
       <%= f.text_field :size ,placeholder: "60x60x175/450リットル"%>
     </div> 
     
     <div class="form-group">
-      <h4>ジャンル選択<span class="text-danger">*</span></h4>
+      <p class="mr-2">ジャンル選択<span class="text-danger">*</span></p>
       <%= f.collection_select(:genre_id, @genres, :id, :name,{prompt: "--選択する--"}) %>
+      <%= link_to "新規ジャンル登録", genres_path %>
     </div> 
     
     <div class="form-group">
-      <h4>保証期限</h4>
+      <p>保証期限</p>
       <%= f.date_field :warranty_period %>
     </div> 
     
     <div class="form-group">
-      <h4>メモ</h4>
+      <p>メモ</p>
       <%= f.text_area :information,placeholder: "メーカー名、型番など" %>
     </div> 
     
     <div class="form-group">
-      <h4>家財の画像</h4>
+      <p>家財の画像</p>
       <%= f.attachment_field:item_image, placeholder:"家財の画像" %>
     </div> 
     
     <div class="form-group">
-      <h4>ステータス</h4>
+      <p>ステータス</p>
       <%= f.radio_button :status, true %>所有中<%= f.radio_button :status, false %>手放す
     </div>  
     
