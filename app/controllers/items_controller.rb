@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class ItemsController < ApplicationController
+  
+  before_action :authenticate_user!
+  
   def index
     @genres = current_user.genres.order(created_at: :desc)
     if params[:genre_id]

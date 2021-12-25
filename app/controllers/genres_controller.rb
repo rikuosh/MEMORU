@@ -1,6 +1,8 @@
 # frozen_string_literal: true
-
 class GenresController < ApplicationController
+  
+  before_action :authenticate_user!
+  
   def index
     @genres = current_user.genres
     @genre = Genre.new
