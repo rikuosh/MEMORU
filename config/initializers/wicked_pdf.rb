@@ -13,9 +13,11 @@
 WickedPdf.config = {
   # Path to the wkhtmltopdf executable: This usually isn't needed if using
   # one of the wkhtmltopdf-binary family of gems.
-  # exe_path: '{Gem.loaded_specs['wkhtmltopdf-binary-aml'].full_gem_path/bin/wkhtmltopdf',
+  # exe_path: '/usr/local/bin/wkhtmltopdf',
   #   or
   # exe_path: Gem.bin_path('wkhtmltopdf-binary', 'wkhtmltopdf')
+
+　:exe_path => "#{Gem.loaded_specs['wkhtmltopdf-binary-aml'].full_gem_path}/bin/wkhtmltopdf"
 
   # Layout file to be used for all PDFs
   # (but can be overridden in `render :pdf` calls)
@@ -26,8 +28,5 @@ WickedPdf.config = {
   # 'xvfb-run' command, in order to simulate an X server.
   #
   # use_xvfb: true,
-  
-  
-  
   
 }
