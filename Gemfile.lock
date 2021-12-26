@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/insphire/wkhtmltopdf-binary-aml
+  revision: e5340ed88aa8f659c1354de3cbcb4080ffb2f333
+  specs:
+    wkhtmltopdf-binary-aml (0.12.2.1)
+
+GIT
   remote: https://github.com/manfe/refile.git
   revision: 46b4178654e60bb5846b1423acf6d0740cdecc25
   specs:
@@ -358,6 +364,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   wicked_pdf
   wkhtmltopdf-binary
+  wkhtmltopdf-binary-aml!
 
 RUBY VERSION
    ruby 2.6.3p62

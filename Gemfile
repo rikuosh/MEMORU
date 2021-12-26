@@ -79,8 +79,17 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'rails-i18n'
 
 gem 'jquery-rails'
+
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+group :development do
+  gem 'wkhtmltopdf-binary'
+end
+
+group :production do
+  gem 'wkhtmltopdf-binary-aml', git: 'https://github.com/insphire/wkhtmltopdf-binary-aml'
+end
+
+
 
 gem 'bootstrap', '~> 4.5'
 gem 'font-awesome-sass', '~> 5.13'
