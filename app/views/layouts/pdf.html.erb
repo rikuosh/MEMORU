@@ -3,11 +3,11 @@
   <head>
     <meta charset='utf-8' />
     <%= stylesheet_link_tag wicked_pdf_asset_base64("pdf") %>
-    <%= wicked_pdf_javascript_include_tag "number_pages" %>
+    <%= javascript_include_tag wicked_pdf_asset_base64("number_pages") %>
   </head>
   <body onload='number_pages'>
     <div id="header">
-      <%= wicked_pdf_image_tag 'mysite.jpg' %>
+      <%= image_tag wicked_pdf_asset_base64('mysite.jpg') %>
     </div>
     <div id="content">
       <%= yield %>
