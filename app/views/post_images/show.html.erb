@@ -47,8 +47,13 @@
          <% end %>
        </th>
        <th>
-        <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+        <% if comment.score >= -0.5 %>
+          <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+        <% else %>
+          ※不適切なコメントと判断したため非表示にしています。
+        <% end %>
        </th>
+       <th>感情分析スコア<%= comment.score %></th>
        <th>
          <% if comment.user == current_user %>
          <%= link_to "削除", post_image_comment_path(comment.post_image, comment), method: :delete %>
