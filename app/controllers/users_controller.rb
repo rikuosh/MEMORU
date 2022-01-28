@@ -3,6 +3,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:favorites]
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
     @users = User.all
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+
   end
 
   def update
@@ -29,13 +31,13 @@ class UsersController < ApplicationController
   end
 
   def follows
-    user = User.find(params[:id])
-    @users = user.following_user
+    @user = User.find(params[:id])
+    @users = @user.following_user
   end
 
   def followers
-    user = User.find(params[:id])
-    @users = user.follower_user
+    @user = User.find(params[:id])
+    @users = @user.follower_user
   end
 
   def favorites
@@ -52,4 +54,12 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
+    end
+  end
+
 end

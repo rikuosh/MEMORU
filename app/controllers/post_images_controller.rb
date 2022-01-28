@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class PostImagesController < ApplicationController
-  
+
   before_action :authenticate_user!
-  
+
   def new
     @post_image = PostImage.new
   end
@@ -32,6 +32,13 @@ class PostImagesController < ApplicationController
 
   def edit
     @post_image = PostImage.find(params[:id])
+    @user = current_user
+    if @post_image.user == current_user
+      render "edit"
+    else
+      redirect_to post_images_path
+    end
+
   end
 
   def update

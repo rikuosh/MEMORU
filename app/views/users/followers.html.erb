@@ -1,5 +1,5 @@
 <div class="container mt-3 mb-3">
-  <h3>フォロワー一覧</h3>
+  <h3><%= @user.name %>さんのフォロワー一覧</h3>
   <% @users.each do |user| %>
   <div>
     <%= link_to user_path(user.id) do %>
