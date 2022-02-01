@@ -9,7 +9,7 @@
     <div class="container mt-4">
       <div class="row">
         <div class="col-md-6 col-sm-6">
-         <p><%= attachment_image_tag @post_image, :image, size:"200x200" %></p>
+         <p><%= attachment_image_tag @post_image, :image, class:"image_show" %></p>
         </div>
         <div class="col-md-6 col-sm-6">
           <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>

@@ -36,3 +36,15 @@ main{
 footer{
   font-family:'Corporate-Mincho-ver2';
 }
+
+.image_show{
+width: 200px;
+height: 200px;
+object-fit: contain; // 200 x 200 の内側に縦横比を保っ画像全体を表示
+}
+
+.post_image_thumb{
+width: 100px;
+height: 100px;
+object-fit: cover; // 100 x 100 の内側に縦横比を保って中央に表示、サイズをオーバーした部分は表示しない
+}

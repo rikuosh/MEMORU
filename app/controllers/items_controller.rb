@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
     else
       all_items = Item.includes(:genre)
     end
-    @items = current_user.items.page(params[:page])
+    @items = current_user.items.page(params[:page]).reverse_order
     respond_to do |format|
       format.html
       format.pdf do

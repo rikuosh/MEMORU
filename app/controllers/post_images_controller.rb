@@ -2,7 +2,7 @@
 
 class PostImagesController < ApplicationController
 
-  before_action :authenticate_user!, except:[:show] 
+  before_action :authenticate_user!, except:[:show]
 
   def new
     @post_image = PostImage.new
@@ -19,7 +19,7 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.all.order(created_at: :desc)
+    @post_images = PostImage.page(params[:page]).reverse_order
     @tags = PostImage.tag_counts_on(:tags).order('count desc')
     @post_image = PostImage.tagged_with(params[:tag]) if @tag = params[:tag]
   end

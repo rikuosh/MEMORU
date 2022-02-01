@@ -6,7 +6,7 @@
   </div>
     <% @post_image.each do |post_image| %>
       <%= link_to post_image_path(post_image.id) do %>
-        <%= attachment_image_tag post_image, :image, size:"100x100" %>
+        <%= attachment_image_tag post_image, :image, class:"post_image_thumb" %>
       <% end %>
     <% end %>
   <% else %>
@@ -18,6 +18,8 @@
       <%= link_to post_image_path(post_image.id) do %>
       <%= attachment_image_tag post_image, :image, size:"100x100" %>
       <% end %>
+      <%= paginate @post_images %>
     <% end %>
   <% end %>
+ 
 </div>

@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name: 家財名
+
