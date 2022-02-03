@@ -95,3 +95,5 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'rubocop-airbnb'
 end
+
+gem 'kaminari-bootstrap', '~> 3.0.1'
