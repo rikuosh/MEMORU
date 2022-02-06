@@ -1,4 +1,6 @@
 <div class="container mt-3 mb-3">
+  <div class="row">
+    
   <h3>手放した家財一覧</h3>
     <table class="table">
       <thead>
@@ -9,8 +11,9 @@
         </tr>
       </thead>
       <tbody>
-        <% @items.each do |item| %>
+        
         <tr>
+          <% @items.each do |item| %>
           <th>
             <% if item.status == false %>  
             <%= link_to item_path(item.id) do %>
@@ -19,9 +22,11 @@
           </th>
           <th><%= item.name %></th>
           <th><%= item.genre.name %></th>
+        
+          <% end %>
+        <% end %> 
         </tr>
-           <% end %>
-           <% end %>
       </tbody>
     </table>
+    </div>
   </div>
